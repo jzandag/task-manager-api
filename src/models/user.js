@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
             if(val.includes('password'))
                 throw new Error('Passowrd easy')
         }
-    }, 
+    },
     email: {
         type: String,
         required: true,

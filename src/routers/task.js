@@ -95,11 +95,11 @@ router.delete('/tasks/:id', auth, async (req,res) => {
 
     try {
         //const task = await Task.findByIdAndDelete(req.params.id)
-        await Task.findOneAndDelete({ _id: req.params.id, owner: req.user._id})
-        // if(!task)
-        //     return res.status(404).send({error: 'Task not found'})
-        // res.send(task)
-        res.send()
+        const task =await Task.findOneAndDelete({ _id: req.params.id, owner: req.user._id})
+        if(!task)
+            return res.status(404).send({error: 'Task not found'})
+        res.send(task)
+        //res.send()
     } catch (error) {
         res.status(500).send('Bad request')
     }
